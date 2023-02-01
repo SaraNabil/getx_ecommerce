@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_ecommerce/core/view_model/auth_view_model.dart';
 import 'package:getx_ecommerce/view/login/widgets/login_card_widget.dart';
 import 'package:getx_ecommerce/view/shared_widgets/custom_button_with_icon_widget.dart';
 import 'package:getx_ecommerce/view/shared_widgets/custom_text_widget.dart';
@@ -6,7 +8,7 @@ import 'package:getx_ecommerce/view/shared_widgets/custom_text_widget.dart';
 import '../../core/resources/colors_manager.dart';
 import '../../core/resources/images_manager.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetWidget<AuthViewModel> {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -33,7 +35,9 @@ class LoginScreen extends StatelessWidget {
                 icon: ImagesManager.facebook),
             const SizedBox(height: 20),
             CustomButtonWithIconWidget(
-              onPressed: () {},
+              onPressed: () {
+                controller.googleSignInMethod();
+              },
               title: 'Sign In with Google',
               icon: ImagesManager.google,
             ),
