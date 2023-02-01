@@ -30,7 +30,9 @@ class LoginScreen extends GetWidget<AuthViewModel> {
             ),
             const SizedBox(height: 30),
             CustomButtonWithIconWidget(
-                onPressed: () {},
+                onPressed: () {
+                  controller.FacebookSignInMethod();
+                },
                 title: 'Sign In with Facebook',
                 icon: ImagesManager.facebook),
             const SizedBox(height: 20),
