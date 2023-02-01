@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_ecommerce/view/login/login_screen.dart';
+import 'package:getx_ecommerce/view/sign_up/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
