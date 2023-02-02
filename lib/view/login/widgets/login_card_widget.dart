@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_ecommerce/view/sign_up/sign_up_screen.dart';
 
 import '../../../core/view_model/auth_view_model.dart';
 import '../../shared_widgets/custom_button_widget.dart';
@@ -9,11 +10,11 @@ import '../../shared_widgets/custom_text_widget.dart';
 import 'login_header_widget.dart';
 
 class LoginCardWidget extends GetWidget<AuthViewModel> {
-  final GlobalKey<FormState> globalKey;
+  final GlobalKey<FormState> formKey;
 
   const LoginCardWidget({
     Key? key,
-    required this.globalKey,
+    required this.formKey,
   }) : super(key: key);
 
   @override
@@ -36,10 +37,10 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
                 controller.email = value;
               },
               validator: (value) {
-                if (value == null) {
-                  print('Error');
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
                 }
-                return '';
+                return null;
               },
             ),
             const SizedBox(height: 20),
@@ -50,24 +51,27 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
                 controller.password = value;
               },
               validator: (value) {
-                if (value == null ) {
-                  print('Error');
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
                 }
-                return '';
+                return null;
               },
             ),
             const SizedBox(height: 20),
-            const CustomTextWidget(
-              text: 'Forgot Password?',
-              fontSize: 14,
+            InkWell(
+              onTap: () {},
+              child: const CustomTextWidget(
+                text: 'Forgot Password?',
+                fontSize: 14,
+              ),
             ),
             const SizedBox(height: 50),
             CustomButtonWidget(
               onPressed: () {
-                globalKey.currentState!.save();
-                // if (globalKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                if (formKey.currentState!.validate()) {
                   controller.emailAndPasswordSignInMethod();
-                // }
+                }
               },
               title: 'Sign in',
             ),

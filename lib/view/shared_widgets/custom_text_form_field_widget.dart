@@ -6,7 +6,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final String text;
   final String hint;
   final Function(String?) onSaved;
-  final String Function(String?) validator;
+  final String? Function(String?) validator;
   const CustomTextFormFieldWidget({
     Key? key,
     required this.text,

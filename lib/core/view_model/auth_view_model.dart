@@ -11,14 +11,14 @@ class AuthViewModel extends GetxController {
 
   String? email, name, password;
 
-  final Rx<User?> _user = Rx<User?>(null);
+   Rx<User?> _user = Rx<User?>(null);
 
   String? get user => _user.value?.email;
 
   @override
   void onInit() {
-    _user.bindStream(_auth.authStateChanges());
     super.onInit();
+    _user.bindStream(_auth.authStateChanges());
   }
 
   void googleSignInMethod() async {
@@ -62,5 +62,24 @@ class AuthViewModel extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+  void emailAndPasswordCreateAccount() async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: email!, password: password!);
+    } catch (e) {
+      print(e.toString());
+
+      Get.snackbar(
+        'Error login account',
+        e.toString(),
+        colorText: ColorsManager.blackColor,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  void logout(){
+    _auth.signOut();
   }
 }

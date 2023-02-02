@@ -14,20 +14,20 @@ class LoginScreen extends GetWidget<AuthViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: ColorsManager.whiteColor,
+        backgroundColor: Colors.transparent,
       ),
       body: Form(
-        key: _globalKey,
+        key: formKey,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView(
             children: [
-              LoginCardWidget(globalKey:_globalKey),
+              LoginCardWidget(formKey:formKey),
               const SizedBox(height: 30),
               const Align(
                 alignment: Alignment.center,

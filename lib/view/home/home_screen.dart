@@ -9,15 +9,14 @@ class HomeScreen extends GetView<AuthViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth _auth = FirebaseAuth.instance;
     return Scaffold(
       body: Center(
         child: TextButton(
           onPressed: () {
-            _auth.signOut();
-            Get.offAll(LoginScreen());
+            controller.logout();
+            Get.offAll(const LoginScreen());
           },
-          child: Text('Logout'),
+          child: const Text('Logout'),
         ),
       ),
     );
