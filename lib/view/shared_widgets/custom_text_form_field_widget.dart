@@ -7,14 +7,12 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final String hint;
   final Function(String?) onSaved;
   final String Function(String?) validator;
-  final TextEditingController controller;
   const CustomTextFormFieldWidget({
     Key? key,
     required this.text,
     required this.hint,
     required this.onSaved,
     required this.validator,
-    required this.controller,
   }) : super(key: key);
 
   @override
@@ -24,7 +22,6 @@ class CustomTextFormFieldWidget extends StatelessWidget {
       children: [
         CustomTextWidget(text: text),
         TextFormField(
-          controller: controller,
           onSaved: onSaved,
           validator: validator,
           decoration: InputDecoration(

@@ -7,14 +7,12 @@ class CustomPasswordTextFormFieldWidget extends StatefulWidget {
   final String hint;
   final Function(String?) onSaved;
   final String Function(String?) validator;
-  final TextEditingController controller;
   const CustomPasswordTextFormFieldWidget({
     Key? key,
     required this.text,
     required this.hint,
     required this.onSaved,
     required this.validator,
-    required this.controller,
   }) : super(key: key);
 
   @override
@@ -32,7 +30,6 @@ class _CustomPasswordTextFormFieldWidgetState
       children: [
         CustomTextWidget(text: widget.text),
         TextFormField(
-          controller: widget.controller,
           onSaved: widget.onSaved,
           validator: widget.validator,
           obscureText: _obscureText,

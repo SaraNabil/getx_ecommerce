@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../core/view_model/auth_view_model.dart';
 import '../../shared_widgets/custom_button_widget.dart';
 import '../../shared_widgets/custom_password_text_form_field_widget.dart';
 import '../../shared_widgets/custom_text_form_field_widget.dart';
 import '../../shared_widgets/custom_text_widget.dart';
 import 'login_header_widget.dart';
 
-class LoginCardWidget extends StatelessWidget {
-  const LoginCardWidget({Key? key}) : super(key: key);
+class LoginCardWidget extends GetWidget<AuthViewModel> {
+  final GlobalKey<FormState> globalKey;
+
+  const LoginCardWidget({
+    Key? key,
+    required this.globalKey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +32,29 @@ class LoginCardWidget extends StatelessWidget {
             CustomTextFormFieldWidget(
               text: 'Email',
               hint: 'user@gmail.com',
-              onSaved: (value) {},
-              validator: (value) => '',
-              controller: TextEditingController(),
+              onSaved: (value) {
+                controller.email = value;
+              },
+              validator: (value) {
+                if (value == null) {
+                  print('Error');
+                }
+                return '';
+              },
             ),
             const SizedBox(height: 20),
             CustomPasswordTextFormFieldWidget(
               text: 'Password',
               hint: '************',
-              onSaved: (value) {},
-              validator: (value) => '',
-              controller: TextEditingController(),
+              onSaved: (value) {
+                controller.password = value;
+              },
+              validator: (value) {
+                if (value == null ) {
+                  print('Error');
+                }
+                return '';
+              },
             ),
             const SizedBox(height: 20),
             const CustomTextWidget(
@@ -44,7 +63,12 @@ class LoginCardWidget extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             CustomButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                globalKey.currentState!.save();
+                // if (globalKey.currentState!.validate()) {
+                  controller.emailAndPasswordSignInMethod();
+                // }
+              },
               title: 'Sign in',
             ),
           ],

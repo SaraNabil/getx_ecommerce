@@ -11,39 +11,45 @@ import '../../core/resources/images_manager.dart';
 class LoginScreen extends GetWidget<AuthViewModel> {
   const LoginScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: ColorsManager.whiteColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            const LoginCardWidget(),
-            const SizedBox(height: 30),
-            const Align(
-              alignment: Alignment.center,
-              child: CustomTextWidget(text: '- OR -'),
-            ),
-            const SizedBox(height: 30),
-            CustomButtonWithIconWidget(
+      body: Form(
+        key: _globalKey,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: ListView(
+            children: [
+              LoginCardWidget(globalKey:_globalKey),
+              const SizedBox(height: 30),
+              const Align(
+                alignment: Alignment.center,
+                child: CustomTextWidget(text: '- OR -'),
+              ),
+              const SizedBox(height: 30),
+              CustomButtonWithIconWidget(
+                  onPressed: () {
+                    controller.facebookSignInMethod();
+                  },
+                  title: 'Sign In with Facebook',
+                  icon: ImagesManager.facebook),
+              const SizedBox(height: 20),
+              CustomButtonWithIconWidget(
                 onPressed: () {
-                  controller.FacebookSignInMethod();
+                  controller.googleSignInMethod();
                 },
-                title: 'Sign In with Facebook',
-                icon: ImagesManager.facebook),
-            const SizedBox(height: 20),
-            CustomButtonWithIconWidget(
-              onPressed: () {
-                controller.googleSignInMethod();
-              },
-              title: 'Sign In with Google',
-              icon: ImagesManager.google,
-            ),
-          ],
+                title: 'Sign In with Google',
+                icon: ImagesManager.google,
+              ),
+            ],
+          ),
         ),
       ),
     );

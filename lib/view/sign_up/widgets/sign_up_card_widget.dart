@@ -30,7 +30,6 @@ class SignUpCardWidget extends StatelessWidget {
               hint: 'David Spade',
               onSaved: (value) {},
               validator: (value) => '',
-              controller: TextEditingController(),
             ),
             const SizedBox(height: 20),
             CustomTextFormFieldWidget(
@@ -38,7 +37,6 @@ class SignUpCardWidget extends StatelessWidget {
               hint: 'user@gmail.com',
               onSaved: (value) {},
               validator: (value) => '',
-              controller: TextEditingController(),
             ),
             const SizedBox(height: 20),
             CustomPasswordTextFormFieldWidget(
@@ -46,7 +44,6 @@ class SignUpCardWidget extends StatelessWidget {
               hint: '************',
               onSaved: (value) {},
               validator: (value) => '',
-              controller: TextEditingController(),
             ),
             const SizedBox(height: 50),
             CustomButtonWidget(
