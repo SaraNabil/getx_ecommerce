@@ -37,9 +37,9 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
               },
               validator: (value) {
                 if (value == null) {
-                  print('Error');
+                  return 'Required';
                 }
-                return '';
+                return null;
               },
             ),
             const SizedBox(height: 20),
@@ -50,10 +50,10 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
                 controller.password = value;
               },
               validator: (value) {
-                if (value == null ) {
-                  print('Error');
+                if (value == null) {
+                  return 'Required';
                 }
-                return '';
+                return null;
               },
             ),
             const SizedBox(height: 20),
@@ -66,7 +66,7 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
               onPressed: () {
                 globalKey.currentState!.save();
                 // if (globalKey.currentState!.validate()) {
-                  controller.emailAndPasswordSignInMethod();
+                controller.emailAndPasswordSignInMethod();
                 // }
               },
               title: 'Sign in',

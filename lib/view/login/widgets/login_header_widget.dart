@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_ecommerce/view/sign_up/sign_up_screen.dart';
 
 import '../../../core/resources/colors_manager.dart';
 import '../../shared_widgets/custom_text_widget.dart';
@@ -13,16 +15,19 @@ class LoginHeaderWidget extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            CustomTextWidget(
+          children: [
+            const CustomTextWidget(
               text: 'Welcome',
               fontWeight: FontWeight.bold,
               fontSize: 30,
             ),
-            CustomTextWidget(
-              text: 'Sign Up',
-              fontSize: 18,
-              color: ColorsManager.primaryColor,
+            InkWell(
+              onTap: () => Get.to(const SignUpScreen()),
+              child: const CustomTextWidget(
+                text: 'Sign Up',
+                fontSize: 18,
+                color: ColorsManager.primaryColor,
+              ),
             ),
           ],
         ),

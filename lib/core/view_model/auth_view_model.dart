@@ -65,6 +65,20 @@ class AuthViewModel extends GetxController {
     }
   }
 
+  void emailAndPasswordSignUpMethod() async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: email!, password: password!);
+    } catch (e) {
+      Get.snackbar(
+        'Error sign up account',
+        e.toString(),
+        colorText: ColorsManager.blackColor,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   void _setInitialScreen(User? user) {
     if (user == null) {
       // if the user is not found then the user is navigated to the Register Screen

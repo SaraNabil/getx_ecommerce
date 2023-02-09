@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../core/view_model/auth_view_model.dart';
 import '../../shared_widgets/custom_button_widget.dart';
 import '../../shared_widgets/custom_password_text_form_field_widget.dart';
 import '../../shared_widgets/custom_text_form_field_widget.dart';
 import '../../shared_widgets/custom_text_widget.dart';
 
-class SignUpCardWidget extends StatelessWidget {
-  const SignUpCardWidget({Key? key}) : super(key: key);
+class SignUpCardWidget extends GetView<AuthViewModel> {
+  final GlobalKey<FormState> globalKey;
+
+  const SignUpCardWidget({
+    Key? key,
+    required this.globalKey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,27 +34,53 @@ class SignUpCardWidget extends StatelessWidget {
             const SizedBox(height: 50),
             CustomTextFormFieldWidget(
               text: 'Name',
-              hint: 'David Spade',
-              onSaved: (value) {},
-              validator: (value) => '',
+              hint: 'User Name',
+              onSaved: (value) {
+                controller.name = value;
+              },
+              validator: (value) {
+                if (value == null) {
+                  return 'Required';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             CustomTextFormFieldWidget(
               text: 'Email',
               hint: 'user@gmail.com',
-              onSaved: (value) {},
-              validator: (value) => '',
+              onSaved: (value) {
+                controller.email = value;
+              },
+              validator: (value) {
+                if (value == null) {
+                  return 'Required';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             CustomPasswordTextFormFieldWidget(
               text: 'Password',
               hint: '************',
-              onSaved: (value) {},
-              validator: (value) => '',
+              onSaved: (value) {
+                controller.password = value;
+              },
+              validator: (value) {
+                if (value == null) {
+                  return 'Required';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 50),
             CustomButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                globalKey.currentState!.save();
+                if (globalKey.currentState!.validate()) {
+                  controller.emailAndPasswordSignUpMethod();
+                }
+              },
               title: 'Sign up',
             ),
           ],

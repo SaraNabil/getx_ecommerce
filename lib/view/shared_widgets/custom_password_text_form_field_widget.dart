@@ -6,7 +6,7 @@ class CustomPasswordTextFormFieldWidget extends StatefulWidget {
   final String text;
   final String hint;
   final Function(String?) onSaved;
-  final String Function(String?) validator;
+  final String? Function(String?) validator;
   const CustomPasswordTextFormFieldWidget({
     Key? key,
     required this.text,
