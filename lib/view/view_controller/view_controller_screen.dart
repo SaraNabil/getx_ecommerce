@@ -9,10 +9,16 @@ class ViewControllerScreen extends GetView<AuthViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => (Get.find<AuthViewModel>().user != null)
-          ? const HomeScreen()
-          : const LoginScreen(),
+    print('hhhhhhh');
+    return GetBuilder<AuthViewModel>(
+      init: AuthViewModel(),
+      builder: (AuthViewModel controller) =>
+          Get.find<AuthViewModel>().user != null ? HomeScreen() : LoginScreen()
+      // return Container();
+      ,
+      // () => (Get.find<AuthViewModel>().user != null)
+      //     ? const HomeScreen()
+      //     : const constLoginScreen(),
     );
   }
 }

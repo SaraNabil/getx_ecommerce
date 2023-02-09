@@ -11,12 +11,13 @@ class AuthViewModel extends GetxController {
 
   String? email, name, password;
 
-  final Rx<User?> _user = Rx<User?>(null);
+ final Rxn<User> _user = Rxn<User>();
 
   String? get user => _user.value?.email;
 
   @override
   void onInit() {
+    print('gggggggggggg');
     _user.bindStream(_auth.authStateChanges());
     super.onInit();
   }
@@ -52,9 +53,8 @@ class AuthViewModel extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(
           email: email!, password: password!);
+      print('jjjj>>>> ${user}');
     } catch (e) {
-      print(e.toString());
-
       Get.snackbar(
         'Error login account',
         e.toString(),
