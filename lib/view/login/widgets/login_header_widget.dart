@@ -22,9 +22,7 @@ class LoginHeaderWidget extends StatelessWidget {
               fontSize: 30,
             ),
             InkWell(
-              onTap: () {
-                Get.to(const SignUpScreen());
-              },
+              onTap: () => Get.to(() => const SignUpScreen()),
               child: const CustomTextWidget(
                 text: 'Sign Up',
                 fontSize: 18,

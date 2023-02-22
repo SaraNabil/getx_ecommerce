@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_ecommerce/core/view_model/auth_view_model.dart';
@@ -14,7 +13,7 @@ class HomeScreen extends GetView<AuthViewModel> {
         child: TextButton(
           onPressed: () {
             controller.logout();
-            Get.offAll(const LoginScreen());
+            Get.offAll(() => const LoginScreen());
           },
           child: const Text('Logout'),
         ),

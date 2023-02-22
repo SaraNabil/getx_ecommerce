@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_ecommerce/view/sign_up/sign_up_screen.dart';
 
 import '../../../core/view_model/auth_view_model.dart';
 import '../../shared_widgets/custom_button_widget.dart';
@@ -37,8 +36,8 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
                 controller.email = value;
               },
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                if (value == null) {
+                  return 'Required';
                 }
                 return null;
               },
@@ -51,8 +50,8 @@ class LoginCardWidget extends GetWidget<AuthViewModel> {
                 controller.password = value;
               },
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                if (value == null) {
+                  return 'Required';
                 }
                 return null;
               },

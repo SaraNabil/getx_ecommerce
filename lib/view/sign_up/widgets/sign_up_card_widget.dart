@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_ecommerce/core/view_model/auth_view_model.dart';
 
+import '../../../core/view_model/auth_view_model.dart';
 import '../../shared_widgets/custom_button_widget.dart';
 import '../../shared_widgets/custom_password_text_form_field_widget.dart';
 import '../../shared_widgets/custom_text_form_field_widget.dart';
@@ -34,13 +34,13 @@ class SignUpCardWidget extends GetView<AuthViewModel> {
             const SizedBox(height: 50),
             CustomTextFormFieldWidget(
               text: 'Name',
-              hint: 'David Spade',
+              hint: 'User Name',
               onSaved: (value) {
                 controller.name = value;
               },
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                if (value == null) {
+                  return 'Required';
                 }
                 return null;
               },
@@ -53,8 +53,8 @@ class SignUpCardWidget extends GetView<AuthViewModel> {
                 controller.email = value;
               },
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                if (value == null) {
+                  return 'Required';
                 }
                 return null;
               },
@@ -67,8 +67,8 @@ class SignUpCardWidget extends GetView<AuthViewModel> {
                 controller.password = value;
               },
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
+                if (value == null) {
+                  return 'Required';
                 }
                 return null;
               },
